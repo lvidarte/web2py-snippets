@@ -1,5 +1,11 @@
+web2py.snippets requires snipMate plugin:
+    http://www.vim.org/scripts/script.php?script_id=2540
+
+Install:
+    Put web2py.snippets in ~/.vim/snippets folder.
+
 Add the following line in your web2py python files:
-   # vim:set filetype=python.web2py:
+    # vim:set filetype=python.web2py:
 
 Add the following line in your web2py html template files:
-   <!-- vim:set filetype=html.web2py: -->
+    <!-- vim:set filetype=html.web2py: -->
