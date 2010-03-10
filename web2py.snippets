@@ -1,0 +1,763 @@
+# ============================================================================
+# web2py snippets
+# @see    http://github.com/lvidarte/snippets/web2py.git
+# @author Leonardo Vidarte <lvidarte[AT]gmail.com>
+# ============================================================================
+#
+# Set in python files (web2py):
+#   # vim:set filetype=python.web2py:
+#
+# Set in html files (templates web2py):
+#   <!-- vim:set filetype=html.web2py: -->
+
+# ============================================================================
+#  COMPLETE API
+# ============================================================================
+#
+# <url:#Container Objects>
+#   request, response, session, cache
+#
+# <url:#Navigation Functions and Objects>
+#   redirect, HTTP
+#
+# <url:#Thread safe app-level module import>
+#   local_import
+#
+# <url:#Internationalization>
+#   T
+#
+# <url:#Views Helpers>
+#   XML, URL, BEAUTIFY
+#
+# <url:#HTTP Building Objects>
+#   A, B, BODY, BR, CENTER, CODE, DIV, EM, EMBED, FIELDSET, FORM, 
+#   H1, H3, H3, H4, H5, H6, HEAD, HR, HTML, IFRAME, IMG, INPUT, 
+#   LABEL, LI, LINK, OL, UL, MENU, META, OBJECT, ON, OPTION, P, PRE, 
+#   SCRIPT, SELECT, SPAN, STYLE,  TABLE,  TD, TAG, TBODY,
+#   TEXTAREA, TFOOT, TH, THEAD, TITLE, TR, TT
+#
+# <url:#Validator Objects>
+#   IS_ALPHANUMERIC, IS_DATE, IS_DATETIME, 
+#   IS_DATE_IN_RANGE, IS_DATETIME_IN_RANGE, IS_DECIMAL_IN_RANGE, IS_EMAIL,
+#   IS_EXPR, IS_FLOAT_IN_RANGE, IS_IMAGE, IS_INT_IN_RANGE, IS_IN_SET,
+#   IS_IPV4, IS_LENGTH, IS_LOWER, IS_MATCH, IS_EMPTY_OR, IS_NOT_EMPTY, 
+#   IS_TIME, IS_URL, IS_UPLOAD_FILENAME, IS_LIST_OF, IS_UPPER, 
+#   IS_SLUG, IS_STRONG, CLEANUP, CRYPT, IS_IN_DB, IS_NOT_IN_DB
+#
+# <url:#Database API>
+#   DAL, Field
+#
+# <url:#Database to HTML>
+#   SQLFORM, SQLTABLE
+#
+# Plus: <url:#Templates>
+
+# ============================================================================
+# Container objects
+# ============================================================================
+snippet request+
+	request.${1:vars|args|cookies|get_vars|post_vars|client|application|controller|function|folder|extension|now|env}
+snippet response+
+	response.${1:status|headers|view|cookies|flash|title|menu}
+snippet session+
+	session.${1:varname}
+snippet cache+
+	cache.${1:ram|disk}
+# ============================================================================
+# Navigation Functions and Objects
+# ============================================================================
+#redirect, HTTP
+snippet _http
+	HTTP(${1:status}, body='${2:}', ${3:**headers}){$4}
+snippet _redirect
+	redirect(${1:location}, how=${2:303})
+# ============================================================================
+# Thread safe app-level module import
+# ============================================================================
+snippet _local_import
+	local_import(${1:name}, reload={2:False}, app={3:request.application})${4}
+# ============================================================================
+# Internationalization
+# ============================================================================
+snippet _t
+	T('${1:message}')${2}
+snippet _t+
+	T('${1:message}', symbols={})${2}
+# ============================================================================
+# Views Helpers
+# ============================================================================
+## URL
+snippet _url
+	URL(r=request, f='${1:index}')${2}
+snippet _url+
+	URL(a=${1:None}, c=${2:None}, f=${3:None}, r=${4:None}, args=[], vars={}, anchor='', extension=None)${5}
+snippet _helpers URL
+	URL(a=${1:None}, c=${2:None}, f=${3:None}, r=${4:None}, args=[], vars={}, anchor='', extension=None)${5}
+## XML
+snippet _xml
+	XML(${1:text})
+snippet _xml+
+	XML(${1:text}, sanitize=${2:False}, permitted_tags=['a','b','blockquote','br/','i','li','ol','ul','p','cite','code','pre','img/',], allowed_attributes={'a': ['href', 'title'], 'img': ['src': 'alt'], 'blockquote': ['type']})${3}
+snippet _helpers XML
+	XML(${1:text}, sanitize=${2:False}, permitted_tags=['a','b','blockquote','br/','i','li','ol','ul','p','cite','code','pre','img/',], allowed_attributes={'a': ['href', 'title'], 'img': ['src': 'alt'], 'blockquote': ['type']})${3}
+## BEAUTIFY 
+snippet _beautify
+	BEAUTIFY(${1:*components})
+snippet _beautify+
+	BEAUTIFY(${1:*components}, ${2:**attributes})
+snippet _helpers BEAUTIFY
+	BEAUTIFY(${1:*components}, ${2:**attributes})
+# ============================================================================
+# HTTP Building Objects
+# ============================================================================
+## DIV
+snippet _div
+	DIV(${1:*components})
+snippet _div+
+	DIV(${1:*components}, ${2:**attributes})
+snippet _helpers DIV
+	DIV(${1:*components}, ${2:**attributes})
+## TAG
+snippet _tag
+	TAG.${1:tag}(${2:*components})
+snippet _tag+
+	TAG.${1:tag}(${2:*components}, ${3:**attributes})
+snippet _helpers TAG
+	TAG.${1:tag}(${2:*components}, ${3:**attributes})
+## HTML
+snippet _html
+	HTML(${1:*components})
+snippet _html+
+	HTML(${1:*components}, ${2:**attributes}, doctype='${3:strict|transitional|frameset|html5}', lang='${4:en}')
+snippet _helpers HTML
+	HTML(${1:*components}, ${2:**attributes}, doctype='${3:strict|transitional|frameset|html5}', lang='${4:en}')
+## XHTML
+snippet _xhtml
+	XHTML(${1:*components}, ${2:**attributes})${3}
+snippet _xhtml+
+	XHTML(${1:*components}, ${2:**attributes}, doctype='${3:strict|transitional|frameset}', lang='${4:en}', xmlns='${5:http://www.w3.org/1999/xhtml}')${6}
+snippet _helpers XHTML
+	XHTML(${1:*components}, ${2:**attributes}, doctype='${3:strict|transitional|frameset}', lang='${4:en}', xmlns='${5:http://www.w3.org/1999/xhtml}')${6}
+## HEAD
+snippet _head
+	HEAD(${1:*components})
+snippet _head+
+	HEAD(${1:*components}, ${2:**attributes})
+snippet _helpers HEAD
+	HEAD(${1:*components}, ${2:**attributes})
+## TITLE
+snippet _title
+	TITLE(${1:*components})
+snippet _title+
+	TITLE(${1:*components}, ${2:**attributes})
+snippet _helpers TITLE
+	TITLE(${1:*components}, ${2:**attributes})
+## META
+snippet _meta
+	META(${1:*components})
+snippet _meta+
+	META(${1:*components}, ${2:**attributes})
+snippet _helpers META
+	META(${1:*components}, ${2:**attributes})
+## LINK
+snippet _link
+	LINK(${1:*components})
+snippet _link+
+	LINK(${1:*components}, ${2:**attributes})
+snippet _helpers LINK
+	LINK(${1:*components}, ${2:**attributes})
+## SCRIPT
+snippet _script
+	SCRIPT(${1:*components})
+snippet _script+
+	SCRIPT(${1:*components}, ${2:**attributes})
+snippet _helpers SCRIPT
+	SCRIPT(${1:*components}, ${2:**attributes})
+## STYLE
+snippet _style
+	STYLE(${1:*components})
+snippet _style+
+	STYLE(${1:*components}, ${2:**attributes})
+snippet _helpers STYLE
+	STYLE(${1:*components}, ${2:**attributes})
+## IMG
+snippet _img
+	IMG(${1:*components})
+snippet _img+
+	IMG(${1:*components}, ${2:**attributes})
+snippet _helpers IMG
+	IMG(${1:*components}, ${2:**attributes})
+## SPAN
+snippet _span
+	SPAN(${1:*components})
+snippet _span+
+	SPAN(${1:*components}, ${2:**attributes})
+snippet _helpers SPAN
+	SPAN(${1:*components}, ${2:**attributes})
+## BODY
+snippet _body
+	BODY(${1:*components})
+snippet _body+
+	BODY(${1:*components}, ${2:**attributes})
+snippet _helpers BODY
+	BODY(${1:*components}, ${2:**attributes})
+## H1
+snippet _h1
+	H1(${1:*components})
+snippet _h1+
+	H1(${1:*components}, ${2:**attributes})
+snippet _helpers H1
+	H1(${1:*components}, ${2:**attributes})
+## H2
+snippet _h2
+	H2(${1:*components})
+snippet _h2+
+	H2(${1:*components}, ${2:**attributes})
+snippet _helpers H2
+	H2(${1:*components}, ${2:**attributes})
+## H3
+snippet _h3
+	H3(${1:*components})
+snippet _h3+
+	H3(${1:*components}, ${2:**attributes})
+snippet _helpers H3
+	H3(${1:*components}, ${2:**attributes})
+## H4
+snippet _h4
+	H4(${1:*components})
+snippet _h4+
+	H4(${1:*components}, ${2:**attributes})
+snippet _helpers H4
+	H4(${1:*components}, ${2:**attributes})
+## H5
+snippet _h5
+	H5(${1:*components})
+snippet _h5+
+	H5(${1:*components}, ${2:**attributes})
+snippet _helpers H5
+	H5(${1:*components}, ${2:**attributes})
+## H6
+snippet _h6
+	H6(${1:*components})
+snippet _h6+
+	H6(${1:*components}, ${2:**attributes})
+snippet _helpers H6
+	H6(${1:*components}, ${2:**attributes})
+## P
+snippet _p
+	P(${1:*components})
+snippet _p+
+	P(${1:*components}, ${2:**attributes})
+snippet _helpers P
+	P(${1:*components}, ${2:**attributes})
+## B
+snippet _b
+	B(${1:*components})
+snippet _b+
+	B(${1:*components}, ${2:**attributes})
+snippet _helpers B
+	B(${1:*components}, ${2:**attributes})
+## BR
+snippet _br
+	BR(${1:*components})
+snippet _br+
+	BR(${1:*components}, ${2:**attributes})
+snippet _helpers BR
+	BR(${1:*components}, ${2:**attributes})
+## HR
+snippet _hr
+	HR(${1:*components})
+snippet _hr+
+	HR(${1:*components}, ${2:**attributes})
+snippet _helpers HR
+	HR(${1:*components}, ${2:**attributes})
+## A
+snippet _a
+	A(${1:*components})
+snippet _a+
+	A(${1:*components}, ${2:**attributes})
+snippet _helpers A
+	A(${1:*components}, ${2:**attributes})
+## EM
+snippet _em
+	EM(${1:*components})
+snippet _em+
+	EM(${1:*components}, ${2:**attributes})
+snippet _helpers EM
+	EM(${1:*components}, ${2:**attributes})
+## EMBED
+snippet _embed
+	EMBED(${1:*components})
+snippet _embed+
+	EMBED(${1:*components}, ${2:**attributes})
+snippet _helpers EMBED
+	EMBED(${1:*components}, ${2:**attributes})
+## TT
+snippet _tt
+	TT(${1:*components})
+snippet _tt+
+	TT(${1:*components}, ${2:**attributes})
+snippet _helpers TT
+	TT(${1:*components}, ${2:**attributes})
+## PRE
+snippet _pre
+	PRE(${1:*components})
+snippet _pre+
+	PRE(${1:*components}, ${2:**attributes})
+snippet _helpers PRE
+	PRE(${1:*components}, ${2:**attributes})
+## CENTER
+snippet _center
+	CENTER(${1:*components})
+snippet _center+
+	CENTER(${1:*components}, ${2:**attributes})
+snippet _helpers CENTER
+	CENTER(${1:*components}, ${2:**attributes})
+## CODE
+snippet _code
+	CODE(${1:*components}, language='${2:python}').xml()
+snippet _code+
+	CODE(${1:*components}, language='${2:python}', link=None, counter=1, styles={}).xml()
+snippet _helpers CODE
+	CODE(${1:*components}, language='${2:python}', link=None, counter=1, styles={}).xml()
+## LABEL
+snippet _label
+	LABEL(${1:*components})
+snippet _label+
+	LABEL(${1:*components}, ${2:**attributes})
+snippet _helpers LABEL
+	LABEL(${1:*components}, ${2:**attributes})
+## LI
+snippet _li
+	LI(${1:*components})
+snippet _li+
+	LI(${1:*components}, ${2:**attributes})
+snippet _helpers LI
+	LI(${1:*components}, ${2:**attributes})
+## UL
+snippet _ul
+	UL(${1:*components})
+snippet _ul+
+	UL(${1:*components}, ${2:**attributes})
+snippet _helpers UL
+	UL(${1:*components}, ${2:**attributes})
+## OL
+snippet _ol
+	OL(${1:*components})
+snippet _ol+
+	OL(${1:*components}, ${2:**attributes})
+snippet _helpers OL
+	OL(${1:*components}, ${2:**attributes})
+## TD
+snippet _td
+	TD(${1:*components})
+snippet _td+
+	TD(${1:*components}, ${2:**attributes})
+snippet _helpers TD
+	TD(${1:*components}, ${2:**attributes})
+## TH
+snippet _th
+	TH(${1:*components})
+snippet _th+
+	TH(${1:*components}, ${2:**attributes})
+snippet _helpers TH
+	TH(${1:*components}, ${2:**attributes})
+## TR
+snippet _tr
+	TR(${1:*components})
+snippet _tr+
+	TR(${1:*components}, ${2:**attributes})
+snippet _helpers TR
+	TR(${1:*components}, ${2:**attributes})
+## THEAD
+snippet _thead
+	THEAD(${1:*components})
+snippet _thead+
+	THEAD(${1:*components}, ${2:**attributes})
+snippet _helpers THEAD
+	THEAD(${1:*components}, ${2:**attributes})
+## TBODY
+snippet _tbody
+	TBODY(${1:*components})
+snippet _tbody+
+	TBODY(${1:*components}, ${2:**attributes})
+snippet _helpers TBODY
+	TBODY(${1:*components}, ${2:**attributes})
+## TFOOT
+snippet _tfoot
+	TFOOT(${1:*components})
+snippet _tfoot+
+	TFOOT(${1:*components}, ${2:**attributes})
+snippet _helpers TFOOT
+	TFOOT(${1:*components}, ${2:**attributes})
+## TABLE
+snippet __table
+	TABLE(${1:*components})
+snippet __table+
+	TABLE(${1:*components}, ${2:**attributes})
+snippet _helpers TABLE
+	TABLE(${1:*components}, ${2:**attributes})
+## I 
+snippet _i
+	I(${1:*components})
+snippet _i+
+	I(${1:*components}, ${2:**attributes})
+snippet _helpers I 
+	I(${1:*components}, ${2:**attributes})
+## IFRAME 
+snippet _iframe
+	IFRAME(${1:*components})
+snippet _iframe+
+	IFRAME(${1:*components}, ${2:**attributes})
+snippet _helpers IFRAME 
+	IFRAME(${1:*components}, ${2:**attributes})
+## INPUT 
+snippet _input
+	INPUT(${1:*components})
+snippet _input+
+	INPUT(${1:*components}, ${2:**attributes})
+snippet _helpers INPUT 
+	INPUT(${1:*components}, ${2:**attributes})
+## TEXTAREA 
+snippet _textarea
+	TEXTAREA(${1:*components})
+snippet _textarea+
+	TEXTAREA(${1:*components}, ${2:**attributes})
+snippet _helpers TEXTAREA 
+	TEXTAREA(${1:*components}, ${2:**attributes})
+## OPTION 
+snippet _option
+	OPTION(${1:*components})
+snippet _option+
+	OPTION(${1:*components}, ${2:**attributes})
+snippet _helpers OPTION 
+	OPTION(${1:*components}, ${2:**attributes})
+## OBJECT 
+snippet _object
+	OBJECT(${1:*components})
+snippet _object+
+	OBJECT(${1:*components}, ${2:**attributes})
+snippet _helpers OBJECT 
+	OBJECT(${1:*components}, ${2:**attributes})
+## SELECT 
+snippet _select
+	SELECT(${1:*components})
+snippet _select+
+	SELECT(${1:*components}, ${2:**attributes})
+snippet _helpers SELECT 
+	SELECT(${1:*components}, ${2:**attributes})
+## FIELDSET 
+snippet _fieldset
+	FIELDSET(${1:*components})
+snippet _fieldset+
+	FIELDSET(${1:*components}, ${2:**attributes})
+snippet _helpers FIELDSET 
+	FIELDSET(${1:*components}, ${2:**attributes})
+## LEGEND 
+snippet _legend
+	LEGEND(${1:*components})
+snippet _legend+
+	LEGEND(${1:*components}, ${2:**attributes})
+snippet _helpers LEGEND 
+	LEGEND(${1:*components}, ${2:**attributes})
+## FORM 
+snippet _form
+	FORM(${1:*components})
+snippet _form+
+	FORM(${1:*components}, ${2:**attributes})
+snippet _helpers FORM 
+	FORM(${1:*components}, ${2:**attributes})
+## MENU 
+snippet _menu
+	MENU(${1:*components})
+snippet _menu+
+	MENU(${1:*components}, ${2:**attributes})
+snippet _helpers MENU 
+	MENU(${1:*components}, ${2:**attributes})
+# ============================================================================
+# Validator Objects
+# ============================================================================
+## IS_ALPHANUMERIC
+snippet _is_alphanumeric
+	IS_ALPHANUMERIC(${1})${2}
+snippet _is_alphanumeric+
+	IS_ALPHANUMERIC(error_message='${1:enter only letters, numbers, and underscore}')${2}
+snippet _validators IS_ALPHANUMERIC
+	IS_ALPHANUMERIC(error_message='${1:enter only letters, numbers, and underscore}')${2}
+## IS_DATE
+snippet _is_date
+	IS_DATE(${1})${2}
+snippet _is_date+
+	IS_DATE(format='${1:%Y-%m-%d}', error_message='${2:enter date as %(format)s}')${3}
+snippet _validators IS_DATE
+	IS_DATE(format='${1:%Y-%m-%d}', error_message='${2:enter date as %(format)s}')${3}
+## IS_DATETIME
+snippet _is_datetime
+	IS_DATETIME(${1})${2}
+snippet _is_datetime+
+	IS_DATETIME(format='${1:%Y-%m-%d %H:%M:%S}', error_message='${2:enter date and time as %(format)s}')${3}
+snippet _validators IS_DATETIME
+	IS_DATETIME(format='${1:%Y-%m-%d %H:%M:%S}', error_message='${2:enter date and time as %(format)s}')${3}
+## IS_DATE_IN_RANGE
+snippet _is_date_in_range
+	IS_DATE_IN_RANGE(${1:minimum}, ${2:maximum}${3})${4}
+snippet _is_date_in_range+
+	IS_DATE_IN_RANGE(minimum=${1:1}, maximum=${2:1}, format='${3:%Y-%m-%d}', error_message=${4:1})${5}
+snippet _validators IS_DATE_IN_RANGE
+	IS_DATE_IN_RANGE(minimum=${1:1}, maximum=${2:1}, format='${3:%Y-%m-%d}', error_message=${4:1})${5}
+## IS_DATETIME_IN_RANGE
+snippet _is_datetime_in_range
+	IS_DATETIME_IN_RANGE(${1:minimum}, ${2:maximum}${3})${4}
+snippet _is_datetime_in_range+
+	IS_DATETIME_IN_RANGE(minimum=${1:None}, maximum=${2:None}, format='${3:%Y-%m-%d %H:%M:%S}', error_message=${4:None})${5}
+snippet _validators IS_DATETIME_IN_RANGE
+	IS_DATETIME_IN_RANGE(minimum=${1:None}, maximum=${2:None}, format='${3:%Y-%m-%d %H:%M:%S}', error_message=${4:None})${5}
+## IS_DECIMAL_IN_RANGE
+snippet _is_decimal_in_range
+	IS_DECIMAL_IN_RANGE(${1:minimum}, ${2:maximum}${3})${4}
+snippet _is_decimal_in_range+
+	IS_DECIMAL_IN_RANGE(${1:minimun}, ${2:maximun}, error_message=${3:None})${4}
+snippet _validators IS_DECIMAL_IN_RANGE
+	IS_DECIMAL_IN_RANGE(${1:minimun}, ${2:maximun}, error_message=${3:None})${4}
+## IS_EMAIL
+snippet _is_email
+	IS_EMAIL(${1})${2}
+snippet _is_email+
+	IS_EMAIL(banned=${1:None}, forced=${2:None}, error_message='${3:enter a valid email address}')${4}
+snippet _validators IS_EMAIL
+	IS_EMAIL(banned=${1:None}, forced=${2:None}, error_message='${3:enter a valid email address}')${4}
+## IS_EXPR
+snippet _is_expr
+	IS_EXPR(${1:expression}${2})${3}
+snippet _is_expr+
+	IS_EXPR(${1:expression}, error_message='${2:invalid expression}')${3}
+snippet _validators IS_EXPR
+	IS_EXPR(${1:expression}, error_message='${2:invalid expression}')${3}
+## IS_FLOAT_IN_RANGE
+snippet _is_float_in_range
+	IS_FLOAT_IN_RANGE(${1:minimum}, ${2:maximum}${3})${4}
+snippet _is_float_in_range+
+	IS_FLOAT_IN_RANGE(${1:minimum}, ${2:maximum}, error_message=${3:None})${4}
+snippet _validators IS_FLOAT_IN_RANGE
+	IS_FLOAT_IN_RANGE(${1:minimum}, ${2:maximum}, error_message=${3:None})${4}
+## IS_IMAGE
+snippet _is_image
+	IS_IMAGE(${1})${2}
+snippet _is_image+
+	IS_IMAGE(extensions=('bmp','gif','jpeg','png'), maxsize=(${1:10000}, ${2:10000}), minsize=(${3:0}, ${4:0}), error_message='${5:invalid image}')${6}
+snippet _validators IS_IMAGE
+	IS_IMAGE(extensions=('bmp','gif','jpeg','png'), maxsize=(${1:10000}, ${2:10000}), minsize=(${3:0}, ${4:0}), error_message='${5:invalid image}')${6}
+## IS_INT_IN_RANGE
+snippet _is_int_in_range
+	IS_INT_IN_RANGE(${1})${2}
+snippet _is_int_in_range+
+	IS_INT_IN_RANGE(${1:minimum}, ${2:maximum}, error_message=${3:None})${4}
+snippet _validators IS_INT_IN_RANGE
+	IS_INT_IN_RANGE(${1:minimum}, ${2:maximum}, error_message=${3:None})${4}
+## IS_IN_SET
+snippet _is_in_set
+	IS_IN_SET(${1:theset}${2})${3}
+snippet _is_in_set+
+	IS_IN_SET(${1:theset}, labels=${2:None}, error_message='${3:value not allowed}', multiple=${4:False}, zero='${5}', sort=${6:False})${7}
+snippet _validators IS_IN_SET
+	IS_IN_SET(${1:theset}, labels=${2:None}, error_message='${3:value not allowed}', multiple=${4:False}, zero='${5}', sort=${6:False})${7}
+## IS_IN_SUBSET
+snippet _is_in_subset
+	IS_IN_SUBSET(${1:*a}, ${2:**b})${3}
+snippet _is_in_subset+
+	IS_IN_SUBSET(${1:*a}, ${2:**b})${3}
+snippet _validators IS_IN_SUBSET
+	IS_IN_SUBSET(${1:*a}, ${2:**b})${3}
+## IS_IPV4
+snippet _is_ipv4
+	IS_IPV4(${1})${2}
+snippet _is_ipv4+
+	IS_IPV4(minip='${1:0.0.0.0}', maxip='${2:255.255.255.255}', invert=${3:False}, is_localhost=${4:None}, is_private=${5:None}, is_automatic=${6:None}, error_message='${7:enter a valid IPv4 address}')${8}
+snippet _validators IS_IPV4
+	IS_IPV4(minip='${1:0.0.0.0}', maxip='${2:255.255.255.255}', invert=${3:False}, is_localhost=${4:None}, is_private=${5:None}, is_automatic=${6:None}, error_message='${7:enter a valid IPv4 address}')${8}
+## IS_LENGTH
+snippet _is_length
+	IS_LENGTH(maxsize=${1:255}, minsize=${2:0}${3})${4}
+snippet _is_length+
+	IS_LENGTH(maxsize=${1:255}, minsize=${2:0}, error_message='${3:enter from %(min)s to %(max)s characters}')${4}
+snippet _validators IS_LENGTH
+	IS_LENGTH(maxsize=${1:255}, minsize=${2:0}, error_message='${3:enter from %(min)s to %(max)s characters}')${4}
+## IS_LOWER
+snippet _is_lower
+	IS_LOWER()
+snippet _is_lower+
+	IS_LOWER()
+snippet _validators IS_LOWER
+	IS_LOWER()
+## IS_MATCH
+snippet _is_match
+	IS_MATCH(${1:expression}${2})${3}
+snippet _is_match+
+	IS_MATCH(${1:expression}, error_message='${2:invalid expression}')${3}
+snippet _validators IS_MATCH
+	IS_MATCH(${1:expression}, error_message='${2:invalid expression}')${3}
+## IS_EMPTY_OR
+snippet _is_empty_or
+	IS_EMPTY_OR(${1:other})
+snippet _is_empty_or+
+	IS_EMPTY_OR(${1:other}, null=${2:None}, empty_regex=${3:None})${4}
+snippet _validators IS_EMPTY_OR
+	IS_EMPTY_OR(${1:other}, null=${2:None}, empty_regex=${3:None})${4}
+## IS_NOT_EMPTY
+snippet _is_not_empty
+	IS_NOT_EMPTY(${1})${2}
+snippet _is_not_empty+
+	IS_NOT_EMPTY(error_message='${1:enter a value}' empty_regex=${2:None})${3}
+snippet _validators IS_NOT_EMPTY
+	IS_NOT_EMPTY(error_message='${1:enter a value}' empty_regex=${2:None})${3}
+## IS_TIME
+snippet _is_time
+	IS_TIME(${1})${2}
+snippet _is_time+
+	IS_TIME(error_message='${1:enter time as hh:mm:ss (seconds, am, pm optional)}')${2}
+snippet _validators IS_TIME
+	IS_TIME(error_message='${1:enter time as hh:mm:ss (seconds, am, pm optional)}')${2}
+## IS_URL
+snippet _is_url
+	IS_URL(${1})${2}
+snippet _is_url+
+	IS_URL(error_message='${1:enter a valid URL}', mode='${2:http}', allowed_schemes=${3:None}, prepend_scheme='${4:http}')${5}
+snippet _validators IS_URL
+	IS_URL(error_message='${1:enter a valid URL}', mode='${2:http}', allowed_schemes=${3:None}, prepend_scheme='${4:http}')${5}
+## IS_UPLOAD_FILENAME
+snippet _is_upload_filename
+	IS_UPLOAD_FILENAME(${1})${2}
+snippet _is_upload_filename+
+	IS_UPLOAD_FILENAME(filename=${1:None}, extension=${2:None}, lastdot=${3:True}, case=${4:1}, error_message='${5:enter valid filename}')${6}
+snippet _validators IS_UPLOAD_FILENAME
+	IS_UPLOAD_FILENAME(filename=${1:None}, extension=${2:None}, lastdot=${3:True}, case=${4:1}, error_message='${5:enter valid filename}')${6}
+## IS_LIST_OF
+snippet _is_list_of
+	IS_LIST_OF(${1:other})${2}
+snippet _is_list_of+
+	IS_LIST_OF(${1:other})${2}
+snippet _validators IS_LIST_OF
+	IS_LIST_OF(${1:other})${2}
+## IS_UPPER
+snippet _is_upper
+	IS_UPPER()
+snippet _is_upper+
+	IS_UPPER()
+snippet _validators IS_UPPER
+	IS_UPPER()
+## IS_SLUG
+snippet _is_slug
+	IS_SLUG(${1})${2}
+snippet _is_slug+
+	IS_SLUG(maxlen=${1:80}, check=${2:False}, error_message='${3:must be slug}')${4}
+snippet _validators IS_SLUG
+	IS_SLUG(maxlen=${1:80}, check=${2:False}, error_message='${3:must be slug}')${4}
+## IS_STRONG
+snippet _is_strong
+	IS_STRONG(${1})${2}
+snippet _is_strong+
+	IS_STRONG(min=${1:8}, max=${2:20}, upper=${3:1}, lower=${4:1}, number=${5:1}, special=${6:1}, specials=r'~!@#$%^&*()_+-=?<>,.:;{}[]|', invalid='${7: "}', error_message=${8:None})${9}
+snippet _validators IS_STRONG
+	IS_STRONG(min=${1:8}, max=${2:20}, upper=${3:1}, lower=${4:1}, number=${5:1}, special=${6:1}, specials=r'~!@#$%^&*()_+-=?<>,.:;{}[]|', invalid='${7: "}', error_message=${8:None})${9}
+## CLEANUP
+snippet _cleanup
+	CLEANUP(${1})${2}
+snippet _cleanup+
+	CLEANUP(regex='${1:[^ \n\w]}')${2}
+snippet _validators CLEANUP
+	CLEANUP(regex='${1:[^ \n\w]}')${2}
+## CRYPT
+snippet _crypt
+	CRYPT()
+snippet _crypt+
+	CRYPT()
+snippet _validators CRYPT
+	CRYPT()
+## IS_IN_DB
+snippet _is_in_db
+	IS_IN_DB(${1})${2}
+snippet _is_in_db+
+	IS_IN_DB(key=${1:None}, digest_alg=${2:None})${3}
+snippet _validators IS_IN_DB
+	IS_IN_DB(key=${1:None}, digest_alg=${2:None})${3}
+## IS_NOT_IN_DB
+snippet _is_not_in_db
+	IS_NOT_IN_DB(${1:dbset}${2})${3}
+snippet _is_not_in_db+
+	IS_NOT_IN_DB(${1:dbset}, ${2:field}, error_message='${3:value already in database}', allowed_override=${4:[]})${5}
+snippet _validators IS_NOT_IN_DB
+	IS_NOT_IN_DB(${1:dbset}, ${2:field}, error_message='${3:value already in database}', allowed_override=${4:[]})${5}
+# ============================================================================
+# Database API
+# ============================================================================
+## DAL
+snippet _dal
+	db = DAL('sqlite://${1:dummy}.db')${2}
+snippet _dal+ sqlite
+	db = DAL('sqlite://${1:file}.db', pool_size=${2:0})${3}
+snippet _dal+ mysql
+	db = DAL('mysql://${1:user}:${2:password}@${3:localhost}/${4:database}', pool_size=${5:0})${6}
+snippet _dal+ postgres
+	db = DAL('postgres://${1:user}:${2:password}@${3:localhost}/${4:database}', pool_size=${5:0})${6}
+snippet _dal+ oracle
+	db = DAL('oracle://${1:user}:${2:password}@${3:localhost}/${4:database}', pool_size=${5:0})${6}
+snippet _dal+ mssql
+	db = DAL('mssql://${1:user}:${2:password}@${3:localhost}/${4:database}', pool_size=${5:0})${6}
+snippet _dal+ firebird
+	db = DAL('firebird://${1:user}:${2:password}@${3:localhost}/${4:database}', pool_size=${5:0})${6}
+## TABLES
+snippet _table
+	db.define_table('${1:tablename}',${2}
+		#migrate=False
+## FIELD
+snippet _field
+	Field('${1:fieldname}', '${2:string}'),${3}
+snippet _field+
+	Field(
+		'${2:fieldname}',
+		type='${3:string|boolean|integer|double|text|blob|date|time|datetime|upload|password}',
+		length=${4:None}, required=${5:False}, default=${6:None},
+		notnull=${7:False}, unique=${8:False},
+		requires=${9:'<default>'},
+		label=${10:None}, comment=${11:None}, widget=${12:None},
+		readable=${13:True}, writable=${14:True},
+		uploadfolder=${15:None}, autodelete=${16:False}, authorize=${17:None},
+	),${18}
+# ============================================================================
+# Database to HTML
+# ============================================================================
+snippet _sqlform
+	SQLFORM()
+snippet _sqltable
+	SQLTABLE()
+# ============================================================================
+# Templates
+# ============================================================================
+snippet _include
+	{{include '${1:otherview}.html'}}
+	${2}
+snippet _extend
+	{{extend '${1:layout}.html'}}
+	${2}
+snippet __
+	{{=${1:varname}}}${2}
+snippet _- 
+	{{${1:code}}}${2}
+snippet _if
+	{{if ${1:expression}:}}
+		${2:code}
+	{{pass}}
+snippet __if
+	{{if ${1:expression}:}}${2:code}{{pass}}${3}
+snippet _for
+	{{for ${1:item} in ${2:iterable}:}}
+		${3:code}
+	{{pass}}
+snippet __for
+	{{for ${1:item} in ${2:iterable}:}}${3:code}{{pass}}
+snippet _pass
+	{{pass}}
+snippet _block
+	{{
+		${1}
+	}}
