@@ -723,6 +723,9 @@ snippet _field+
 		readable=${13:True}, writable=${14:True},
 		uploadfolder=${15:None}, autodelete=${16:False}, authorize=${17:None},
 	),${18}
+## WIDGETS
+snippet _widget
+	widget=SQLFORM.widgets.${1:string|text|password|integer|double|time|date|datetime|upload|boolean|blob|options|multiple|radio|checkboxes}.widget${2}
 # ============================================================================
 # Database to HTML
 # ============================================================================
