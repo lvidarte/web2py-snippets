@@ -55,664 +55,671 @@
 # ============================================================================
 # Container objects
 # ============================================================================
-snippet request+
+snippet request_
 	request.${1:vars|args|cookies|get_vars|post_vars|client|application|controller|function|folder|extension|now|env}
-snippet response+
+snippet response_
 	response.${1:status|headers|view|cookies|flash|title|menu}
-snippet session+
+snippet session_
 	session.${1:varname}
-snippet cache+
+snippet cache_
 	cache.${1:ram|disk}
 # ============================================================================
 # Navigation Functions and Objects
 # ============================================================================
 #redirect, HTTP
-snippet _http
+snippet http_
 	HTTP(${1:status}, body='${2:}', ${3:**headers}){$4}
-snippet _redirect
+snippet redirect_
 	redirect(${1:location}, how=${2:303})
 # ============================================================================
 # Thread safe app-level module import
 # ============================================================================
-snippet _local_import
+snippet local_import_
 	local_import(${1:name}, reload={2:False}, app={3:request.application})${4}
 # ============================================================================
 # Internationalization
 # ============================================================================
-snippet _t
+snippet t_
 	T('${1:message}')${2}
-snippet _t+
+snippet t__
 	T('${1:message}', symbols={})${2}
 # ============================================================================
 # Views Helpers
 # ============================================================================
 ## URL
-snippet _url
+snippet url_
 	URL(r=request, f='${1:index}')${2}
-snippet _url+
+snippet url__
 	URL(a=${1:None}, c=${2:None}, f=${3:None}, r=${4:None}, args=[], vars={}, anchor='', extension=None)${5}
-snippet _helpers URL
+snippet helpers_ URL
 	URL(a=${1:None}, c=${2:None}, f=${3:None}, r=${4:None}, args=[], vars={}, anchor='', extension=None)${5}
 ## XML
-snippet _xml
+snippet xml_
 	XML(${1:text})
-snippet _xml+
+snippet xml__
 	XML(${1:text}, sanitize=${2:False}, permitted_tags=['a','b','blockquote','br/','i','li','ol','ul','p','cite','code','pre','img/',], allowed_attributes={'a': ['href', 'title'], 'img': ['src': 'alt'], 'blockquote': ['type']})${3}
-snippet _helpers XML
+snippet helpers_ XML
 	XML(${1:text}, sanitize=${2:False}, permitted_tags=['a','b','blockquote','br/','i','li','ol','ul','p','cite','code','pre','img/',], allowed_attributes={'a': ['href', 'title'], 'img': ['src': 'alt'], 'blockquote': ['type']})${3}
 ## BEAUTIFY 
-snippet _beautify
+snippet beautify_
 	BEAUTIFY(${1:*components})
-snippet _beautify+
+snippet beautify__
 	BEAUTIFY(${1:*components}, ${2:**attributes})
-snippet _helpers BEAUTIFY
+snippet helpers_ BEAUTIFY
 	BEAUTIFY(${1:*components}, ${2:**attributes})
 # ============================================================================
 # HTTP Building Objects
 # ============================================================================
 ## DIV
-snippet _div
+snippet div_
 	DIV(${1:*components})
-snippet _div+
+snippet div__
 	DIV(${1:*components}, ${2:**attributes})
-snippet _helpers DIV
+snippet helpers_ DIV
 	DIV(${1:*components}, ${2:**attributes})
 ## TAG
-snippet _tag
+snippet tag_
 	TAG.${1:tag}(${2:*components})
-snippet _tag+
+snippet tag__
 	TAG.${1:tag}(${2:*components}, ${3:**attributes})
-snippet _helpers TAG
+snippet helpers_ TAG
 	TAG.${1:tag}(${2:*components}, ${3:**attributes})
 ## HTML
-snippet _html
+snippet html_
 	HTML(${1:*components})
-snippet _html+
+snippet html__
 	HTML(${1:*components}, ${2:**attributes}, doctype='${3:strict|transitional|frameset|html5}', lang='${4:en}')
-snippet _helpers HTML
+snippet helpers_ HTML
 	HTML(${1:*components}, ${2:**attributes}, doctype='${3:strict|transitional|frameset|html5}', lang='${4:en}')
 ## XHTML
-snippet _xhtml
+snippet xhtml_
 	XHTML(${1:*components}, ${2:**attributes})${3}
-snippet _xhtml+
+snippet xhtml__
 	XHTML(${1:*components}, ${2:**attributes}, doctype='${3:strict|transitional|frameset}', lang='${4:en}', xmlns='${5:http://www.w3.org/1999/xhtml}')${6}
-snippet _helpers XHTML
+snippet helpers_ XHTML
 	XHTML(${1:*components}, ${2:**attributes}, doctype='${3:strict|transitional|frameset}', lang='${4:en}', xmlns='${5:http://www.w3.org/1999/xhtml}')${6}
 ## HEAD
-snippet _head
+snippet head_
 	HEAD(${1:*components})
-snippet _head+
+snippet head__
 	HEAD(${1:*components}, ${2:**attributes})
-snippet _helpers HEAD
+snippet helpers_ HEAD
 	HEAD(${1:*components}, ${2:**attributes})
 ## TITLE
-snippet _title
+snippet title_
 	TITLE(${1:*components})
-snippet _title+
+snippet title__
 	TITLE(${1:*components}, ${2:**attributes})
-snippet _helpers TITLE
+snippet helpers_ TITLE
 	TITLE(${1:*components}, ${2:**attributes})
 ## META
-snippet _meta
+snippet meta_
 	META(${1:*components})
-snippet _meta+
+snippet meta__
 	META(${1:*components}, ${2:**attributes})
-snippet _helpers META
+snippet helpers_ META
 	META(${1:*components}, ${2:**attributes})
 ## LINK
-snippet _link
+snippet link_
 	LINK(${1:*components})
-snippet _link+
+snippet link__
 	LINK(${1:*components}, ${2:**attributes})
-snippet _helpers LINK
+snippet helpers_ LINK
 	LINK(${1:*components}, ${2:**attributes})
 ## SCRIPT
-snippet _script
+snippet script_
 	SCRIPT(${1:*components})
-snippet _script+
+snippet script__
 	SCRIPT(${1:*components}, ${2:**attributes})
-snippet _helpers SCRIPT
+snippet helpers_ SCRIPT
 	SCRIPT(${1:*components}, ${2:**attributes})
 ## STYLE
-snippet _style
+snippet style_
 	STYLE(${1:*components})
-snippet _style+
+snippet style__
 	STYLE(${1:*components}, ${2:**attributes})
-snippet _helpers STYLE
+snippet helpers_ STYLE
 	STYLE(${1:*components}, ${2:**attributes})
 ## IMG
-snippet _img
+snippet img_
 	IMG(${1:*components})
-snippet _img+
+snippet img__
 	IMG(${1:*components}, ${2:**attributes})
-snippet _helpers IMG
+snippet helpers_ IMG
 	IMG(${1:*components}, ${2:**attributes})
 ## SPAN
-snippet _span
+snippet span_
 	SPAN(${1:*components})
-snippet _span+
+snippet span__
 	SPAN(${1:*components}, ${2:**attributes})
-snippet _helpers SPAN
+snippet helpers_ SPAN
 	SPAN(${1:*components}, ${2:**attributes})
 ## BODY
-snippet _body
+snippet body_
 	BODY(${1:*components})
-snippet _body+
+snippet body__
 	BODY(${1:*components}, ${2:**attributes})
-snippet _helpers BODY
+snippet helpers_ BODY
 	BODY(${1:*components}, ${2:**attributes})
 ## H1
-snippet _h1
+snippet h1_
 	H1(${1:*components})
-snippet _h1+
+snippet h1__
 	H1(${1:*components}, ${2:**attributes})
-snippet _helpers H1
+snippet helpers_ H1
 	H1(${1:*components}, ${2:**attributes})
 ## H2
-snippet _h2
+snippet h2_
 	H2(${1:*components})
-snippet _h2+
+snippet h2__
 	H2(${1:*components}, ${2:**attributes})
-snippet _helpers H2
+snippet helpers_ H2
 	H2(${1:*components}, ${2:**attributes})
 ## H3
-snippet _h3
+snippet h3_
 	H3(${1:*components})
-snippet _h3+
+snippet h3__
 	H3(${1:*components}, ${2:**attributes})
-snippet _helpers H3
+snippet helpers_ H3
 	H3(${1:*components}, ${2:**attributes})
 ## H4
-snippet _h4
+snippet h4_
 	H4(${1:*components})
-snippet _h4+
+snippet h4__
 	H4(${1:*components}, ${2:**attributes})
-snippet _helpers H4
+snippet helpers_ H4
 	H4(${1:*components}, ${2:**attributes})
 ## H5
-snippet _h5
+snippet h5_
 	H5(${1:*components})
-snippet _h5+
+snippet h5__
 	H5(${1:*components}, ${2:**attributes})
-snippet _helpers H5
+snippet helpers_ H5
 	H5(${1:*components}, ${2:**attributes})
 ## H6
-snippet _h6
+snippet h6_
 	H6(${1:*components})
-snippet _h6+
+snippet h6__
 	H6(${1:*components}, ${2:**attributes})
-snippet _helpers H6
+snippet helpers_ H6
 	H6(${1:*components}, ${2:**attributes})
 ## P
-snippet _p
+snippet p_
 	P(${1:*components})
-snippet _p+
+snippet p__
 	P(${1:*components}, ${2:**attributes})
-snippet _helpers P
+snippet helpers_ P
 	P(${1:*components}, ${2:**attributes})
 ## B
-snippet _b
+snippet b_
 	B(${1:*components})
-snippet _b+
+snippet b__
 	B(${1:*components}, ${2:**attributes})
-snippet _helpers B
+snippet helpers_ B
 	B(${1:*components}, ${2:**attributes})
 ## BR
-snippet _br
+snippet br_
 	BR(${1:*components})
-snippet _br+
+snippet br__
 	BR(${1:*components}, ${2:**attributes})
-snippet _helpers BR
+snippet helpers_ BR
 	BR(${1:*components}, ${2:**attributes})
 ## HR
-snippet _hr
+snippet hr_
 	HR(${1:*components})
-snippet _hr+
+snippet hr__
 	HR(${1:*components}, ${2:**attributes})
-snippet _helpers HR
+snippet helpers_ HR
 	HR(${1:*components}, ${2:**attributes})
 ## A
-snippet _a
+snippet a_
 	A(${1:*components})
-snippet _a+
+snippet a__
 	A(${1:*components}, ${2:**attributes})
-snippet _helpers A
+snippet helpers_ A
 	A(${1:*components}, ${2:**attributes})
 ## EM
-snippet _em
+snippet em_
 	EM(${1:*components})
-snippet _em+
+snippet em__
 	EM(${1:*components}, ${2:**attributes})
-snippet _helpers EM
+snippet helpers_ EM
 	EM(${1:*components}, ${2:**attributes})
 ## EMBED
-snippet _embed
+snippet embed_
 	EMBED(${1:*components})
-snippet _embed+
+snippet embed__
 	EMBED(${1:*components}, ${2:**attributes})
-snippet _helpers EMBED
+snippet helpers_ EMBED
 	EMBED(${1:*components}, ${2:**attributes})
 ## TT
-snippet _tt
+snippet tt_
 	TT(${1:*components})
-snippet _tt+
+snippet tt__
 	TT(${1:*components}, ${2:**attributes})
-snippet _helpers TT
+snippet helpers_ TT
 	TT(${1:*components}, ${2:**attributes})
 ## PRE
-snippet _pre
+snippet pre_
 	PRE(${1:*components})
-snippet _pre+
+snippet pre__
 	PRE(${1:*components}, ${2:**attributes})
-snippet _helpers PRE
+snippet helpers_ PRE
 	PRE(${1:*components}, ${2:**attributes})
 ## CENTER
-snippet _center
+snippet center_
 	CENTER(${1:*components})
-snippet _center+
+snippet center__
 	CENTER(${1:*components}, ${2:**attributes})
-snippet _helpers CENTER
+snippet helpers_ CENTER
 	CENTER(${1:*components}, ${2:**attributes})
 ## CODE
-snippet _code
+snippet code_
 	CODE(${1:*components}, language='${2:python}').xml()
-snippet _code+
+snippet code__
 	CODE(${1:*components}, language='${2:python}', link=None, counter=1, styles={}).xml()
-snippet _helpers CODE
+snippet helpers_ CODE
 	CODE(${1:*components}, language='${2:python}', link=None, counter=1, styles={}).xml()
 ## LABEL
-snippet _label
+snippet label_
 	LABEL(${1:*components})
-snippet _label+
+snippet label__
 	LABEL(${1:*components}, ${2:**attributes})
-snippet _helpers LABEL
+snippet helpers_ LABEL
 	LABEL(${1:*components}, ${2:**attributes})
 ## LI
-snippet _li
+snippet li_
 	LI(${1:*components})
-snippet _li+
+snippet li__
 	LI(${1:*components}, ${2:**attributes})
-snippet _helpers LI
+snippet helpers_ LI
 	LI(${1:*components}, ${2:**attributes})
 ## UL
-snippet _ul
+snippet ul_
 	UL(${1:*components})
-snippet _ul+
+snippet ul__
 	UL(${1:*components}, ${2:**attributes})
-snippet _helpers UL
+snippet helpers_ UL
 	UL(${1:*components}, ${2:**attributes})
 ## OL
-snippet _ol
+snippet ol_
 	OL(${1:*components})
-snippet _ol+
+snippet ol__
 	OL(${1:*components}, ${2:**attributes})
-snippet _helpers OL
+snippet helpers_ OL
 	OL(${1:*components}, ${2:**attributes})
 ## TD
-snippet _td
+snippet td_
 	TD(${1:*components})
-snippet _td+
+snippet td__
 	TD(${1:*components}, ${2:**attributes})
-snippet _helpers TD
+snippet helpers_ TD
 	TD(${1:*components}, ${2:**attributes})
 ## TH
-snippet _th
+snippet th_
 	TH(${1:*components})
-snippet _th+
+snippet th__
 	TH(${1:*components}, ${2:**attributes})
-snippet _helpers TH
+snippet helpers_ TH
 	TH(${1:*components}, ${2:**attributes})
 ## TR
-snippet _tr
+snippet tr_
 	TR(${1:*components})
-snippet _tr+
+snippet tr__
 	TR(${1:*components}, ${2:**attributes})
-snippet _helpers TR
+snippet helpers_ TR
 	TR(${1:*components}, ${2:**attributes})
 ## THEAD
-snippet _thead
+snippet thead_
 	THEAD(${1:*components})
-snippet _thead+
+snippet thead__
 	THEAD(${1:*components}, ${2:**attributes})
-snippet _helpers THEAD
+snippet helpers_ THEAD
 	THEAD(${1:*components}, ${2:**attributes})
 ## TBODY
-snippet _tbody
+snippet tbody_
 	TBODY(${1:*components})
-snippet _tbody+
+snippet tbody__
 	TBODY(${1:*components}, ${2:**attributes})
-snippet _helpers TBODY
+snippet helpers_ TBODY
 	TBODY(${1:*components}, ${2:**attributes})
 ## TFOOT
-snippet _tfoot
+snippet tfoot_
 	TFOOT(${1:*components})
-snippet _tfoot+
+snippet tfoot__
 	TFOOT(${1:*components}, ${2:**attributes})
-snippet _helpers TFOOT
+snippet helpers_ TFOOT
 	TFOOT(${1:*components}, ${2:**attributes})
 ## TABLE
-snippet __table
+snippet table_
 	TABLE(${1:*components})
-snippet __table+
+snippet table__
 	TABLE(${1:*components}, ${2:**attributes})
-snippet _helpers TABLE
+snippet helpers_ TABLE
 	TABLE(${1:*components}, ${2:**attributes})
 ## I 
-snippet _i
+snippet i_
 	I(${1:*components})
-snippet _i+
+snippet i__
 	I(${1:*components}, ${2:**attributes})
-snippet _helpers I 
+snippet helpers_ I 
 	I(${1:*components}, ${2:**attributes})
 ## IFRAME 
-snippet _iframe
+snippet iframe_
 	IFRAME(${1:*components})
-snippet _iframe+
+snippet iframe__
 	IFRAME(${1:*components}, ${2:**attributes})
-snippet _helpers IFRAME 
+snippet helpers_ IFRAME 
 	IFRAME(${1:*components}, ${2:**attributes})
 ## INPUT 
-snippet _input
+snippet input_
 	INPUT(${1:*components})
-snippet _input+
+snippet input__
 	INPUT(${1:*components}, ${2:**attributes})
-snippet _helpers INPUT 
+snippet helpers_ INPUT 
 	INPUT(${1:*components}, ${2:**attributes})
 ## TEXTAREA 
-snippet _textarea
+snippet textarea_
 	TEXTAREA(${1:*components})
-snippet _textarea+
+snippet textarea__
 	TEXTAREA(${1:*components}, ${2:**attributes})
-snippet _helpers TEXTAREA 
+snippet helpers_ TEXTAREA 
 	TEXTAREA(${1:*components}, ${2:**attributes})
 ## OPTION 
-snippet _option
+snippet option_
 	OPTION(${1:*components})
-snippet _option+
+snippet option__
 	OPTION(${1:*components}, ${2:**attributes})
-snippet _helpers OPTION 
+snippet helpers_ OPTION 
 	OPTION(${1:*components}, ${2:**attributes})
 ## OBJECT 
-snippet _object
+snippet object_
 	OBJECT(${1:*components})
-snippet _object+
+snippet object__
 	OBJECT(${1:*components}, ${2:**attributes})
-snippet _helpers OBJECT 
+snippet helpers_ OBJECT 
 	OBJECT(${1:*components}, ${2:**attributes})
 ## SELECT 
-snippet _select
+snippet select_
 	SELECT(${1:*components})
-snippet _select+
+snippet select__
 	SELECT(${1:*components}, ${2:**attributes})
-snippet _helpers SELECT 
+snippet helpers_ SELECT 
 	SELECT(${1:*components}, ${2:**attributes})
 ## FIELDSET 
-snippet _fieldset
+snippet fieldset_
 	FIELDSET(${1:*components})
-snippet _fieldset+
+snippet fieldset__
 	FIELDSET(${1:*components}, ${2:**attributes})
-snippet _helpers FIELDSET 
+snippet helpers_ FIELDSET 
 	FIELDSET(${1:*components}, ${2:**attributes})
 ## LEGEND 
-snippet _legend
+snippet legend_
 	LEGEND(${1:*components})
-snippet _legend+
+snippet legend__
 	LEGEND(${1:*components}, ${2:**attributes})
-snippet _helpers LEGEND 
+snippet helpers_ LEGEND 
 	LEGEND(${1:*components}, ${2:**attributes})
 ## FORM 
-snippet _form
+snippet form_
 	FORM(${1:*components})
-snippet _form+
+snippet form__
 	FORM(${1:*components}, ${2:**attributes})
-snippet _helpers FORM 
+snippet helpers_ FORM 
 	FORM(${1:*components}, ${2:**attributes})
 ## MENU 
-snippet _menu
+snippet menu_
 	MENU(${1:*components})
-snippet _menu+
+snippet menu__
 	MENU(${1:*components}, ${2:**attributes})
-snippet _helpers MENU 
+snippet helpers_ MENU 
 	MENU(${1:*components}, ${2:**attributes})
 # ============================================================================
 # Validator Objects
 # ============================================================================
 ## IS_ALPHANUMERIC
-snippet _is_alphanumeric
+snippet is_alphanumeric_
 	IS_ALPHANUMERIC(${1})${2}
-snippet _is_alphanumeric+
+snippet is_alphanumeric__
 	IS_ALPHANUMERIC(error_message='${1:enter only letters, numbers, and underscore}')${2}
-snippet _validators IS_ALPHANUMERIC
+snippet validators_ IS_ALPHANUMERIC
 	IS_ALPHANUMERIC(error_message='${1:enter only letters, numbers, and underscore}')${2}
 ## IS_DATE
-snippet _is_date
+snippet is_date_
 	IS_DATE(${1})${2}
-snippet _is_date+
+snippet is_date__
 	IS_DATE(format='${1:%Y-%m-%d}', error_message='${2:enter date as %(format)s}')${3}
-snippet _validators IS_DATE
+snippet validators_ IS_DATE
 	IS_DATE(format='${1:%Y-%m-%d}', error_message='${2:enter date as %(format)s}')${3}
 ## IS_DATETIME
-snippet _is_datetime
+snippet is_datetime_
 	IS_DATETIME(${1})${2}
-snippet _is_datetime+
+snippet is_datetime__
 	IS_DATETIME(format='${1:%Y-%m-%d %H:%M:%S}', error_message='${2:enter date and time as %(format)s}')${3}
-snippet _validators IS_DATETIME
+snippet validators_ IS_DATETIME
 	IS_DATETIME(format='${1:%Y-%m-%d %H:%M:%S}', error_message='${2:enter date and time as %(format)s}')${3}
 ## IS_DATE_IN_RANGE
-snippet _is_date_in_range
+snippet is_date_in_range_
 	IS_DATE_IN_RANGE(${1:minimum}, ${2:maximum}${3})${4}
-snippet _is_date_in_range+
+snippet is_date_in_range__
 	IS_DATE_IN_RANGE(minimum=${1:1}, maximum=${2:1}, format='${3:%Y-%m-%d}', error_message=${4:1})${5}
-snippet _validators IS_DATE_IN_RANGE
+snippet validators_ IS_DATE_IN_RANGE
 	IS_DATE_IN_RANGE(minimum=${1:1}, maximum=${2:1}, format='${3:%Y-%m-%d}', error_message=${4:1})${5}
 ## IS_DATETIME_IN_RANGE
-snippet _is_datetime_in_range
+snippet is_datetime_in_range_
 	IS_DATETIME_IN_RANGE(${1:minimum}, ${2:maximum}${3})${4}
-snippet _is_datetime_in_range+
+snippet is_datetime_in_range__
 	IS_DATETIME_IN_RANGE(minimum=${1:None}, maximum=${2:None}, format='${3:%Y-%m-%d %H:%M:%S}', error_message=${4:None})${5}
-snippet _validators IS_DATETIME_IN_RANGE
+snippet validators_ IS_DATETIME_IN_RANGE
 	IS_DATETIME_IN_RANGE(minimum=${1:None}, maximum=${2:None}, format='${3:%Y-%m-%d %H:%M:%S}', error_message=${4:None})${5}
 ## IS_DECIMAL_IN_RANGE
-snippet _is_decimal_in_range
+snippet is_decimal_in_range_
 	IS_DECIMAL_IN_RANGE(${1:minimum}, ${2:maximum}${3})${4}
-snippet _is_decimal_in_range+
+snippet is_decimal_in_range__
 	IS_DECIMAL_IN_RANGE(${1:minimun}, ${2:maximun}, error_message=${3:None})${4}
-snippet _validators IS_DECIMAL_IN_RANGE
+snippet validators_ IS_DECIMAL_IN_RANGE
 	IS_DECIMAL_IN_RANGE(${1:minimun}, ${2:maximun}, error_message=${3:None})${4}
 ## IS_EMAIL
-snippet _is_email
+snippet is_email_
 	IS_EMAIL(${1})${2}
-snippet _is_email+
+snippet is_email__
 	IS_EMAIL(banned=${1:None}, forced=${2:None}, error_message='${3:enter a valid email address}')${4}
-snippet _validators IS_EMAIL
+snippet validators_ IS_EMAIL
 	IS_EMAIL(banned=${1:None}, forced=${2:None}, error_message='${3:enter a valid email address}')${4}
 ## IS_EXPR
-snippet _is_expr
+snippet is_expr_
 	IS_EXPR(${1:expression}${2})${3}
-snippet _is_expr+
+snippet is_expr__
 	IS_EXPR(${1:expression}, error_message='${2:invalid expression}')${3}
-snippet _validators IS_EXPR
+snippet validators_ IS_EXPR
 	IS_EXPR(${1:expression}, error_message='${2:invalid expression}')${3}
 ## IS_FLOAT_IN_RANGE
-snippet _is_float_in_range
+snippet is_float_in_range_
 	IS_FLOAT_IN_RANGE(${1:minimum}, ${2:maximum}${3})${4}
-snippet _is_float_in_range+
+snippet is_float_in_range__
 	IS_FLOAT_IN_RANGE(${1:minimum}, ${2:maximum}, error_message=${3:None})${4}
-snippet _validators IS_FLOAT_IN_RANGE
+snippet validators_ IS_FLOAT_IN_RANGE
 	IS_FLOAT_IN_RANGE(${1:minimum}, ${2:maximum}, error_message=${3:None})${4}
 ## IS_IMAGE
-snippet _is_image
+snippet is_image_
 	IS_IMAGE(${1})${2}
-snippet _is_image+
+snippet is_image__
 	IS_IMAGE(extensions=('bmp','gif','jpeg','png'), maxsize=(${1:10000}, ${2:10000}), minsize=(${3:0}, ${4:0}), error_message='${5:invalid image}')${6}
-snippet _validators IS_IMAGE
+snippet validators_ IS_IMAGE
 	IS_IMAGE(extensions=('bmp','gif','jpeg','png'), maxsize=(${1:10000}, ${2:10000}), minsize=(${3:0}, ${4:0}), error_message='${5:invalid image}')${6}
 ## IS_INT_IN_RANGE
-snippet _is_int_in_range
+snippet is_int_in_range_
 	IS_INT_IN_RANGE(${1})${2}
-snippet _is_int_in_range+
+snippet is_int_in_range__
 	IS_INT_IN_RANGE(${1:minimum}, ${2:maximum}, error_message=${3:None})${4}
-snippet _validators IS_INT_IN_RANGE
+snippet validators_ IS_INT_IN_RANGE
 	IS_INT_IN_RANGE(${1:minimum}, ${2:maximum}, error_message=${3:None})${4}
 ## IS_IN_SET
-snippet _is_in_set
+snippet is_in_set_
 	IS_IN_SET(${1:theset}${2})${3}
-snippet _is_in_set+
+snippet is_in_set__
 	IS_IN_SET(${1:theset}, labels=${2:None}, error_message='${3:value not allowed}', multiple=${4:False}, zero='${5}', sort=${6:False})${7}
-snippet _validators IS_IN_SET
+snippet validators_ IS_IN_SET
 	IS_IN_SET(${1:theset}, labels=${2:None}, error_message='${3:value not allowed}', multiple=${4:False}, zero='${5}', sort=${6:False})${7}
 ## IS_IN_SUBSET
-snippet _is_in_subset
+snippet is_in_subset_
 	IS_IN_SUBSET(${1:*a}, ${2:**b})${3}
-snippet _is_in_subset+
+snippet is_in_subset__
 	IS_IN_SUBSET(${1:*a}, ${2:**b})${3}
-snippet _validators IS_IN_SUBSET
+snippet validators_ IS_IN_SUBSET
 	IS_IN_SUBSET(${1:*a}, ${2:**b})${3}
 ## IS_IPV4
-snippet _is_ipv4
+snippet is_ipv4_
 	IS_IPV4(${1})${2}
-snippet _is_ipv4+
+snippet is_ipv4__
 	IS_IPV4(minip='${1:0.0.0.0}', maxip='${2:255.255.255.255}', invert=${3:False}, is_localhost=${4:None}, is_private=${5:None}, is_automatic=${6:None}, error_message='${7:enter a valid IPv4 address}')${8}
-snippet _validators IS_IPV4
+snippet validators_ IS_IPV4
 	IS_IPV4(minip='${1:0.0.0.0}', maxip='${2:255.255.255.255}', invert=${3:False}, is_localhost=${4:None}, is_private=${5:None}, is_automatic=${6:None}, error_message='${7:enter a valid IPv4 address}')${8}
 ## IS_LENGTH
-snippet _is_length
+snippet is_length_
 	IS_LENGTH(maxsize=${1:255}, minsize=${2:0}${3})${4}
-snippet _is_length+
+snippet is_length__
 	IS_LENGTH(maxsize=${1:255}, minsize=${2:0}, error_message='${3:enter from %(min)s to %(max)s characters}')${4}
-snippet _validators IS_LENGTH
+snippet validators_ IS_LENGTH
 	IS_LENGTH(maxsize=${1:255}, minsize=${2:0}, error_message='${3:enter from %(min)s to %(max)s characters}')${4}
 ## IS_LOWER
-snippet _is_lower
+snippet is_lower_
 	IS_LOWER()
-snippet _is_lower+
+snippet is_lower__
 	IS_LOWER()
-snippet _validators IS_LOWER
+snippet validators_ IS_LOWER
 	IS_LOWER()
 ## IS_MATCH
-snippet _is_match
+snippet is_match_
 	IS_MATCH(${1:expression}${2})${3}
-snippet _is_match+
+snippet is_match__
 	IS_MATCH(${1:expression}, error_message='${2:invalid expression}')${3}
-snippet _validators IS_MATCH
+snippet validators_ IS_MATCH
 	IS_MATCH(${1:expression}, error_message='${2:invalid expression}')${3}
 ## IS_EMPTY_OR
-snippet _is_empty_or
+snippet is_empty_or_
 	IS_EMPTY_OR(${1:other})
-snippet _is_empty_or+
+snippet is_empty_or__
 	IS_EMPTY_OR(${1:other}, null=${2:None}, empty_regex=${3:None})${4}
-snippet _validators IS_EMPTY_OR
+snippet validators_ IS_EMPTY_OR
 	IS_EMPTY_OR(${1:other}, null=${2:None}, empty_regex=${3:None})${4}
 ## IS_NOT_EMPTY
-snippet _is_not_empty
+snippet is_not_empty_
 	IS_NOT_EMPTY(${1})${2}
-snippet _is_not_empty+
+snippet is_not_empty__
 	IS_NOT_EMPTY(error_message='${1:enter a value}' empty_regex=${2:None})${3}
-snippet _validators IS_NOT_EMPTY
+snippet validators_ IS_NOT_EMPTY
 	IS_NOT_EMPTY(error_message='${1:enter a value}' empty_regex=${2:None})${3}
 ## IS_TIME
-snippet _is_time
+snippet is_time_
 	IS_TIME(${1})${2}
-snippet _is_time+
+snippet is_time__
 	IS_TIME(error_message='${1:enter time as hh:mm:ss (seconds, am, pm optional)}')${2}
-snippet _validators IS_TIME
+snippet validators_ IS_TIME
 	IS_TIME(error_message='${1:enter time as hh:mm:ss (seconds, am, pm optional)}')${2}
 ## IS_URL
-snippet _is_url
+snippet is_url_
 	IS_URL(${1})${2}
-snippet _is_url+
+snippet is_url__
 	IS_URL(error_message='${1:enter a valid URL}', mode='${2:http}', allowed_schemes=${3:None}, prepend_scheme='${4:http}')${5}
-snippet _validators IS_URL
+snippet validators_ IS_URL
 	IS_URL(error_message='${1:enter a valid URL}', mode='${2:http}', allowed_schemes=${3:None}, prepend_scheme='${4:http}')${5}
 ## IS_UPLOAD_FILENAME
-snippet _is_upload_filename
+snippet is_upload_filename_
 	IS_UPLOAD_FILENAME(${1})${2}
-snippet _is_upload_filename+
+snippet is_upload_filename__
 	IS_UPLOAD_FILENAME(filename=${1:None}, extension=${2:None}, lastdot=${3:True}, case=${4:1}, error_message='${5:enter valid filename}')${6}
-snippet _validators IS_UPLOAD_FILENAME
+snippet validators_ IS_UPLOAD_FILENAME
 	IS_UPLOAD_FILENAME(filename=${1:None}, extension=${2:None}, lastdot=${3:True}, case=${4:1}, error_message='${5:enter valid filename}')${6}
 ## IS_LIST_OF
-snippet _is_list_of
+snippet is_list_of_
 	IS_LIST_OF(${1:other})${2}
-snippet _is_list_of+
+snippet is_list_of__
 	IS_LIST_OF(${1:other})${2}
-snippet _validators IS_LIST_OF
+snippet validators_ IS_LIST_OF
 	IS_LIST_OF(${1:other})${2}
 ## IS_UPPER
-snippet _is_upper
+snippet is_upper_
 	IS_UPPER()
-snippet _is_upper+
+snippet is_upper__
 	IS_UPPER()
-snippet _validators IS_UPPER
+snippet validators_ IS_UPPER
 	IS_UPPER()
 ## IS_SLUG
-snippet _is_slug
+snippet is_slug_
 	IS_SLUG(${1})${2}
-snippet _is_slug+
+snippet is_slug__
 	IS_SLUG(maxlen=${1:80}, check=${2:False}, error_message='${3:must be slug}')${4}
-snippet _validators IS_SLUG
+snippet validators_ IS_SLUG
 	IS_SLUG(maxlen=${1:80}, check=${2:False}, error_message='${3:must be slug}')${4}
 ## IS_STRONG
-snippet _is_strong
+snippet is_strong_
 	IS_STRONG(${1})${2}
-snippet _is_strong+
-	IS_STRONG(min=${1:8}, max=${2:20}, upper=${3:1}, lower=${4:1}, number=${5:1}, special=${6:1}, specials=r'~!@#$%^&*()_+-=?<>,.:;{}[]|', invalid='${7: "}', error_message=${8:None})${9}
-snippet _validators IS_STRONG
-	IS_STRONG(min=${1:8}, max=${2:20}, upper=${3:1}, lower=${4:1}, number=${5:1}, special=${6:1}, specials=r'~!@#$%^&*()_+-=?<>,.:;{}[]|', invalid='${7: "}', error_message=${8:None})${9}
+snippet is_strong__
+	IS_STRONG(min=${1:8}, max=${2:20}, upper=${3:1}, lower=${4:1}, number=${5:1}, special=${6:1}, specials=r'~!@#$%^&*()__-=?<>,.:;{}[]|', invalid='${7: "}', error_message=${8:None})${9}
+snippet validators_ IS_STRONG
+	IS_STRONG(min=${1:8}, max=${2:20}, upper=${3:1}, lower=${4:1}, number=${5:1}, special=${6:1}, specials=r'~!@#$%^&*()__-=?<>,.:;{}[]|', invalid='${7: "}', error_message=${8:None})${9}
 ## CLEANUP
-snippet _cleanup
+snippet cleanup_
 	CLEANUP(${1})${2}
-snippet _cleanup+
+snippet cleanup__
 	CLEANUP(regex='${1:[^ \n\w]}')${2}
-snippet _validators CLEANUP
+snippet validators_ CLEANUP
 	CLEANUP(regex='${1:[^ \n\w]}')${2}
 ## CRYPT
-snippet _crypt
+snippet crypt_
 	CRYPT()
-snippet _crypt+
+snippet crypt__
 	CRYPT()
-snippet _validators CRYPT
+snippet validators_ CRYPT
 	CRYPT()
 ## IS_IN_DB
-snippet _is_in_db
+snippet is_in_db_
 	IS_IN_DB(${1})${2}
-snippet _is_in_db+
+snippet is_in_db__
 	IS_IN_DB(key=${1:None}, digest_alg=${2:None})${3}
-snippet _validators IS_IN_DB
+snippet validators_ IS_IN_DB
 	IS_IN_DB(key=${1:None}, digest_alg=${2:None})${3}
 ## IS_NOT_IN_DB
-snippet _is_not_in_db
+snippet is_not_in_db_
 	IS_NOT_IN_DB(${1:dbset}${2})${3}
-snippet _is_not_in_db+
+snippet is_not_in_db__
 	IS_NOT_IN_DB(${1:dbset}, ${2:field}, error_message='${3:value already in database}', allowed_override=${4:[]})${5}
-snippet _validators IS_NOT_IN_DB
+snippet validators_ IS_NOT_IN_DB
 	IS_NOT_IN_DB(${1:dbset}, ${2:field}, error_message='${3:value already in database}', allowed_override=${4:[]})${5}
 # ============================================================================
 # Database API
 # ============================================================================
 ## DAL
-snippet _dal
+snippet dal_
 	db = DAL('sqlite://${1:dummy}.db')${2}
-snippet _dal+ sqlite
+snippet dal__ sqlite
 	db = DAL('sqlite://${1:file}.db', pool_size=${2:0})${3}
-snippet _dal+ mysql
+snippet dal__ mysql
 	db = DAL('mysql://${1:user}:${2:password}@${3:localhost}/${4:database}', pool_size=${5:0})${6}
-snippet _dal+ postgres
+snippet dal__ postgres
 	db = DAL('postgres://${1:user}:${2:password}@${3:localhost}/${4:database}', pool_size=${5:0})${6}
-snippet _dal+ oracle
+snippet dal__ oracle
 	db = DAL('oracle://${1:user}:${2:password}@${3:localhost}/${4:database}', pool_size=${5:0})${6}
-snippet _dal+ mssql
+snippet dal__ mssql
 	db = DAL('mssql://${1:user}:${2:password}@${3:localhost}/${4:database}', pool_size=${5:0})${6}
-snippet _dal+ firebird
+snippet dal__ firebird
 	db = DAL('firebird://${1:user}:${2:password}@${3:localhost}/${4:database}', pool_size=${5:0})${6}
 ## TABLES
-snippet _table
+snippet define_table_
 	db.define_table('${1:tablename}',${2}
 		#migrate=False
+	)
+snippet define_table__
+	db.define_table('${1:tablename}',
+		Field('${1:fieldname}', '${2:string}'${3}),
+		Field('${4:fieldname}', '${5:string}'${6}),${7}
+		#migrate=False
+	)
 ## FIELD
-snippet _field
+snippet field_
 	Field('${1:fieldname}', '${2:string}'),${3}
-snippet _field+
+snippet field__
 	Field(
 		'${2:fieldname}',
 		type='${3:string|boolean|integer|double|text|blob|date|time|datetime|upload|password}',
@@ -724,43 +731,43 @@ snippet _field+
 		uploadfolder=${15:None}, autodelete=${16:False}, authorize=${17:None},
 	),${18}
 ## WIDGETS
-snippet _widget
+snippet widget_
 	widget=SQLFORM.widgets.${1:string|text|password|integer|double|time|date|datetime|upload|boolean|blob|options|multiple|radio|checkboxes}.widget${2}
 # ============================================================================
 # Database to HTML
 # ============================================================================
-snippet _sqlform
+snippet sqlform_
 	SQLFORM()
-snippet _sqltable
+snippet sqltable_
 	SQLTABLE()
 # ============================================================================
 # Templates
 # ============================================================================
-snippet _include
+snippet include_
 	{{include '${1:otherview}.html'}}
 	${2}
-snippet _extend
+snippet extend_
 	{{extend '${1:layout}.html'}}
 	${2}
 snippet __
 	{{=${1:varname}}}${2}
-snippet _- 
+snippet -_ 
 	{{${1:code}}}${2}
-snippet _if
+snippet if_
 	{{if ${1:expression}:}}
 		${2:code}
 	{{pass}}
-snippet __if
+snippet if__
 	{{if ${1:expression}:}}${2:code}{{pass}}${3}
-snippet _for
+snippet for_
 	{{for ${1:item} in ${2:iterable}:}}
 		${3:code}
 	{{pass}}
-snippet __for
+snippet for__
 	{{for ${1:item} in ${2:iterable}:}}${3:code}{{pass}}
-snippet _pass
+snippet pass_
 	{{pass}}
-snippet _block
+snippet block_
 	{{
 		${1}
 	}}
