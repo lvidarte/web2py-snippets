@@ -1,13 +1,15 @@
 # ============================================================================
-# web2py snippets
+# WEB2PY SNIPPETS
+# web2py.snippets is based on web2py version 1.76.3
+#
 # @see    http://github.com/lvidarte/web2py-snippets
 # @author Leonardo Vidarte <lvidarte[AT]gmail.com>
 # ============================================================================
 #
-# Set in python files (web2py):
+# For autoload set in python files (web2py):
 #   # vim:set filetype=python.web2py:
 #
-# Set in html files (templates web2py):
+# For autoload set in html files (templates web2py):
 #   <!-- vim:set filetype=html.web2py: -->
 
 # ============================================================================
@@ -70,12 +72,12 @@ snippet cache_
 snippet http_
 	HTTP(${1:status}, body='${2:}', ${3:**headers}){$4}
 snippet redirect_
-	redirect(${1:location}, how=${2:303})
+	redirect(${1:location}, how=${2:303})${3}
 # ============================================================================
 # Thread safe app-level module import
 # ============================================================================
 snippet local_import_
-	local_import(${1:name}, reload={2:False}, app={3:request.application})${4}
+	local_import(${1:name}, reload=${2:False}, app=${3:request.application})${4}
 # ============================================================================
 # Internationalization
 # ============================================================================
@@ -88,49 +90,49 @@ snippet t__
 # ============================================================================
 ## URL
 snippet url_
-	URL(r=request, f='${1:index}')${2}
+	URL(r=request, f='${1:index}'${2})${3}
 snippet url__
 	URL(a=${1:None}, c=${2:None}, f=${3:None}, r=${4:None}, args=[], vars={}, anchor='', extension=None)${5}
 snippet helpers_ URL
 	URL(a=${1:None}, c=${2:None}, f=${3:None}, r=${4:None}, args=[], vars={}, anchor='', extension=None)${5}
 ## XML
 snippet xml_
-	XML(${1:text})
+	XML(${1:text}${2})${3}
 snippet xml__
 	XML(${1:text}, sanitize=${2:False}, permitted_tags=['a','b','blockquote','br/','i','li','ol','ul','p','cite','code','pre','img/',], allowed_attributes={'a': ['href', 'title'], 'img': ['src': 'alt'], 'blockquote': ['type']})${3}
 snippet helpers_ XML
 	XML(${1:text}, sanitize=${2:False}, permitted_tags=['a','b','blockquote','br/','i','li','ol','ul','p','cite','code','pre','img/',], allowed_attributes={'a': ['href', 'title'], 'img': ['src': 'alt'], 'blockquote': ['type']})${3}
 ## BEAUTIFY 
 snippet beautify_
-	BEAUTIFY(${1:*components})
+	BEAUTIFY(${1:*components}${2})${3}
 snippet beautify__
-	BEAUTIFY(${1:*components}, ${2:**attributes})
+	BEAUTIFY(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ BEAUTIFY
-	BEAUTIFY(${1:*components}, ${2:**attributes})
+	BEAUTIFY(${1:*components}, ${2:**attributes})${3}
 # ============================================================================
 # HTTP Building Objects
 # ============================================================================
 ## DIV
 snippet div_
-	DIV(${1:*components})
+	DIV(${1:*components})${2}
 snippet div__
-	DIV(${1:*components}, ${2:**attributes})
+	DIV(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ DIV
-	DIV(${1:*components}, ${2:**attributes})
+	DIV(${1:*components}, ${2:**attributes})${3}
 ## TAG
 snippet tag_
-	TAG.${1:tag}(${2:*components})
+	TAG.${1:tag}(${2:*components})${3}
 snippet tag__
-	TAG.${1:tag}(${2:*components}, ${3:**attributes})
+	TAG.${1:tag}(${2:*components}, ${3:**attributes})${4}
 snippet helpers_ TAG
-	TAG.${1:tag}(${2:*components}, ${3:**attributes})
+	TAG.${1:tag}(${2:*components}, ${3:**attributes})${4}
 ## HTML
 snippet html_
-	HTML(${1:*components})
+	HTML(${1:*components})${2}
 snippet html__
-	HTML(${1:*components}, ${2:**attributes}, doctype='${3:strict|transitional|frameset|html5}', lang='${4:en}')
+	HTML(${1:*components}, ${2:**attributes}, doctype='${3:strict|transitional|frameset|html5}', lang='${4:en}')${5}
 snippet helpers_ HTML
-	HTML(${1:*components}, ${2:**attributes}, doctype='${3:strict|transitional|frameset|html5}', lang='${4:en}')
+	HTML(${1:*components}, ${2:**attributes}, doctype='${3:strict|transitional|frameset|html5}', lang='${4:en}')${5}
 ## XHTML
 snippet xhtml_
 	XHTML(${1:*components}, ${2:**attributes})${3}
@@ -140,340 +142,340 @@ snippet helpers_ XHTML
 	XHTML(${1:*components}, ${2:**attributes}, doctype='${3:strict|transitional|frameset}', lang='${4:en}', xmlns='${5:http://www.w3.org/1999/xhtml}')${6}
 ## HEAD
 snippet head_
-	HEAD(${1:*components})
+	HEAD(${1:*components})${2}
 snippet head__
-	HEAD(${1:*components}, ${2:**attributes})
+	HEAD(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ HEAD
-	HEAD(${1:*components}, ${2:**attributes})
+	HEAD(${1:*components}, ${2:**attributes})${3}
 ## TITLE
 snippet title_
-	TITLE(${1:*components})
+	TITLE(${1:*components})${2}
 snippet title__
-	TITLE(${1:*components}, ${2:**attributes})
+	TITLE(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ TITLE
-	TITLE(${1:*components}, ${2:**attributes})
+	TITLE(${1:*components}, ${2:**attributes})${3}
 ## META
 snippet meta_
-	META(${1:*components})
+	META(${1:*components})${2}
 snippet meta__
-	META(${1:*components}, ${2:**attributes})
+	META(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ META
-	META(${1:*components}, ${2:**attributes})
+	META(${1:*components}, ${2:**attributes})${3}
 ## LINK
 snippet link_
-	LINK(${1:*components})
+	LINK(${1:*components})${2}
 snippet link__
-	LINK(${1:*components}, ${2:**attributes})
+	LINK(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ LINK
-	LINK(${1:*components}, ${2:**attributes})
+	LINK(${1:*components}, ${2:**attributes})${3}
 ## SCRIPT
 snippet script_
-	SCRIPT(${1:*components})
+	SCRIPT(${1:*components})${2}
 snippet script__
-	SCRIPT(${1:*components}, ${2:**attributes})
+	SCRIPT(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ SCRIPT
-	SCRIPT(${1:*components}, ${2:**attributes})
+	SCRIPT(${1:*components}, ${2:**attributes})${3}
 ## STYLE
 snippet style_
-	STYLE(${1:*components})
+	STYLE(${1:*components})${2}
 snippet style__
-	STYLE(${1:*components}, ${2:**attributes})
+	STYLE(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ STYLE
-	STYLE(${1:*components}, ${2:**attributes})
+	STYLE(${1:*components}, ${2:**attributes})${3}
 ## IMG
 snippet img_
-	IMG(${1:*components})
+	IMG(${1:*components})${2}
 snippet img__
-	IMG(${1:*components}, ${2:**attributes})
+	IMG(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ IMG
-	IMG(${1:*components}, ${2:**attributes})
+	IMG(${1:*components}, ${2:**attributes})${3}
 ## SPAN
 snippet span_
-	SPAN(${1:*components})
+	SPAN(${1:*components})${2}
 snippet span__
-	SPAN(${1:*components}, ${2:**attributes})
+	SPAN(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ SPAN
-	SPAN(${1:*components}, ${2:**attributes})
+	SPAN(${1:*components}, ${2:**attributes})${3}
 ## BODY
 snippet body_
-	BODY(${1:*components})
+	BODY(${1:*components})${2}
 snippet body__
-	BODY(${1:*components}, ${2:**attributes})
+	BODY(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ BODY
-	BODY(${1:*components}, ${2:**attributes})
+	BODY(${1:*components}, ${2:**attributes})${3}
 ## H1
 snippet h1_
-	H1(${1:*components})
+	H1(${1:*components})${2}
 snippet h1__
-	H1(${1:*components}, ${2:**attributes})
+	H1(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ H1
-	H1(${1:*components}, ${2:**attributes})
+	H1(${1:*components}, ${2:**attributes})${3}
 ## H2
 snippet h2_
-	H2(${1:*components})
+	H2(${1:*components})${2}
 snippet h2__
-	H2(${1:*components}, ${2:**attributes})
+	H2(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ H2
-	H2(${1:*components}, ${2:**attributes})
+	H2(${1:*components}, ${2:**attributes})${3}
 ## H3
 snippet h3_
-	H3(${1:*components})
+	H3(${1:*components})${2}
 snippet h3__
-	H3(${1:*components}, ${2:**attributes})
+	H3(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ H3
-	H3(${1:*components}, ${2:**attributes})
+	H3(${1:*components}, ${2:**attributes})${3}
 ## H4
 snippet h4_
-	H4(${1:*components})
+	H4(${1:*components})${2}
 snippet h4__
-	H4(${1:*components}, ${2:**attributes})
+	H4(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ H4
-	H4(${1:*components}, ${2:**attributes})
+	H4(${1:*components}, ${2:**attributes})${3}
 ## H5
 snippet h5_
-	H5(${1:*components})
+	H5(${1:*components})${2}
 snippet h5__
-	H5(${1:*components}, ${2:**attributes})
+	H5(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ H5
-	H5(${1:*components}, ${2:**attributes})
+	H5(${1:*components}, ${2:**attributes})${3}
 ## H6
 snippet h6_
-	H6(${1:*components})
+	H6(${1:*components})${2}
 snippet h6__
-	H6(${1:*components}, ${2:**attributes})
+	H6(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ H6
-	H6(${1:*components}, ${2:**attributes})
+	H6(${1:*components}, ${2:**attributes})${3}
 ## P
 snippet p_
-	P(${1:*components})
+	P(${1:*components})${2}
 snippet p__
-	P(${1:*components}, ${2:**attributes})
+	P(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ P
-	P(${1:*components}, ${2:**attributes})
+	P(${1:*components}, ${2:**attributes})${3}
 ## B
 snippet b_
-	B(${1:*components})
+	B(${1:*components})${2}
 snippet b__
-	B(${1:*components}, ${2:**attributes})
+	B(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ B
-	B(${1:*components}, ${2:**attributes})
+	B(${1:*components}, ${2:**attributes})${3}
 ## BR
 snippet br_
-	BR(${1:*components})
+	BR(${1:*components})${2}
 snippet br__
-	BR(${1:*components}, ${2:**attributes})
+	BR(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ BR
-	BR(${1:*components}, ${2:**attributes})
+	BR(${1:*components}, ${2:**attributes})${3}
 ## HR
 snippet hr_
-	HR(${1:*components})
+	HR(${1:*components})${2}
 snippet hr__
-	HR(${1:*components}, ${2:**attributes})
+	HR(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ HR
-	HR(${1:*components}, ${2:**attributes})
+	HR(${1:*components}, ${2:**attributes})${3}
 ## A
 snippet a_
-	A(${1:*components})
+	A(${1:*components})${2}
 snippet a__
-	A(${1:*components}, ${2:**attributes})
+	A(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ A
-	A(${1:*components}, ${2:**attributes})
+	A(${1:*components}, ${2:**attributes})${3}
 ## EM
 snippet em_
-	EM(${1:*components})
+	EM(${1:*components})${2}
 snippet em__
-	EM(${1:*components}, ${2:**attributes})
+	EM(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ EM
-	EM(${1:*components}, ${2:**attributes})
+	EM(${1:*components}, ${2:**attributes})${3}
 ## EMBED
 snippet embed_
-	EMBED(${1:*components})
+	EMBED(${1:*components})${2}
 snippet embed__
-	EMBED(${1:*components}, ${2:**attributes})
+	EMBED(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ EMBED
-	EMBED(${1:*components}, ${2:**attributes})
+	EMBED(${1:*components}, ${2:**attributes})${3}
 ## TT
 snippet tt_
-	TT(${1:*components})
+	TT(${1:*components})${2}
 snippet tt__
-	TT(${1:*components}, ${2:**attributes})
+	TT(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ TT
-	TT(${1:*components}, ${2:**attributes})
+	TT(${1:*components}, ${2:**attributes})${3}
 ## PRE
 snippet pre_
-	PRE(${1:*components})
+	PRE(${1:*components})${2}
 snippet pre__
-	PRE(${1:*components}, ${2:**attributes})
+	PRE(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ PRE
-	PRE(${1:*components}, ${2:**attributes})
+	PRE(${1:*components}, ${2:**attributes})${3}
 ## CENTER
 snippet center_
-	CENTER(${1:*components})
+	CENTER(${1:*components})${2}
 snippet center__
-	CENTER(${1:*components}, ${2:**attributes})
+	CENTER(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ CENTER
-	CENTER(${1:*components}, ${2:**attributes})
+	CENTER(${1:*components}, ${2:**attributes})${3}
 ## CODE
 snippet code_
-	CODE(${1:*components}, language='${2:python}').xml()
+	CODE(${1:*components}, language='${2:python}').xml()${3}
 snippet code__
-	CODE(${1:*components}, language='${2:python}', link=None, counter=1, styles={}).xml()
+	CODE(${1:*components}, language='${2:python}', link=None, counter=1, styles={}).xml()${3}
 snippet helpers_ CODE
-	CODE(${1:*components}, language='${2:python}', link=None, counter=1, styles={}).xml()
+	CODE(${1:*components}, language='${2:python}', link=None, counter=1, styles={}).xml()${3}
 ## LABEL
 snippet label_
-	LABEL(${1:*components})
+	LABEL(${1:*components})${2}
 snippet label__
-	LABEL(${1:*components}, ${2:**attributes})
+	LABEL(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ LABEL
-	LABEL(${1:*components}, ${2:**attributes})
+	LABEL(${1:*components}, ${2:**attributes})${3}
 ## LI
 snippet li_
-	LI(${1:*components})
+	LI(${1:*components})${2}
 snippet li__
-	LI(${1:*components}, ${2:**attributes})
+	LI(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ LI
-	LI(${1:*components}, ${2:**attributes})
+	LI(${1:*components}, ${2:**attributes})${3}
 ## UL
 snippet ul_
-	UL(${1:*components})
+	UL(${1:*components})${2}
 snippet ul__
-	UL(${1:*components}, ${2:**attributes})
+	UL(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ UL
-	UL(${1:*components}, ${2:**attributes})
+	UL(${1:*components}, ${2:**attributes})${3}
 ## OL
 snippet ol_
-	OL(${1:*components})
+	OL(${1:*components})${2}
 snippet ol__
-	OL(${1:*components}, ${2:**attributes})
+	OL(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ OL
-	OL(${1:*components}, ${2:**attributes})
+	OL(${1:*components}, ${2:**attributes})${3}
 ## TD
 snippet td_
-	TD(${1:*components})
+	TD(${1:*components})${2}
 snippet td__
-	TD(${1:*components}, ${2:**attributes})
+	TD(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ TD
-	TD(${1:*components}, ${2:**attributes})
+	TD(${1:*components}, ${2:**attributes})${3}
 ## TH
 snippet th_
-	TH(${1:*components})
+	TH(${1:*components})${2}
 snippet th__
-	TH(${1:*components}, ${2:**attributes})
+	TH(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ TH
-	TH(${1:*components}, ${2:**attributes})
+	TH(${1:*components}, ${2:**attributes})${3}
 ## TR
 snippet tr_
-	TR(${1:*components})
+	TR(${1:*components})${2}
 snippet tr__
-	TR(${1:*components}, ${2:**attributes})
+	TR(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ TR
-	TR(${1:*components}, ${2:**attributes})
+	TR(${1:*components}, ${2:**attributes})${3}
 ## THEAD
 snippet thead_
-	THEAD(${1:*components})
+	THEAD(${1:*components})${2}
 snippet thead__
-	THEAD(${1:*components}, ${2:**attributes})
+	THEAD(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ THEAD
-	THEAD(${1:*components}, ${2:**attributes})
+	THEAD(${1:*components}, ${2:**attributes})${3}
 ## TBODY
 snippet tbody_
-	TBODY(${1:*components})
+	TBODY(${1:*components})${2}
 snippet tbody__
-	TBODY(${1:*components}, ${2:**attributes})
+	TBODY(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ TBODY
-	TBODY(${1:*components}, ${2:**attributes})
+	TBODY(${1:*components}, ${2:**attributes})${3}
 ## TFOOT
 snippet tfoot_
-	TFOOT(${1:*components})
+	TFOOT(${1:*components})${2}
 snippet tfoot__
-	TFOOT(${1:*components}, ${2:**attributes})
+	TFOOT(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ TFOOT
-	TFOOT(${1:*components}, ${2:**attributes})
+	TFOOT(${1:*components}, ${2:**attributes})${3}
 ## TABLE
 snippet table_
-	TABLE(${1:*components})
+	TABLE(${1:*components})${2}
 snippet table__
-	TABLE(${1:*components}, ${2:**attributes})
+	TABLE(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ TABLE
-	TABLE(${1:*components}, ${2:**attributes})
+	TABLE(${1:*components}, ${2:**attributes})${3}
 ## I 
 snippet i_
-	I(${1:*components})
+	I(${1:*components})${2}
 snippet i__
-	I(${1:*components}, ${2:**attributes})
+	I(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ I 
-	I(${1:*components}, ${2:**attributes})
+	I(${1:*components}, ${2:**attributes})${3}
 ## IFRAME 
 snippet iframe_
-	IFRAME(${1:*components})
+	IFRAME(${1:*components})${2}
 snippet iframe__
-	IFRAME(${1:*components}, ${2:**attributes})
+	IFRAME(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ IFRAME 
-	IFRAME(${1:*components}, ${2:**attributes})
+	IFRAME(${1:*components}, ${2:**attributes})${3}
 ## INPUT 
 snippet input_
-	INPUT(${1:*components})
+	INPUT(${1:*components})${2}
 snippet input__
-	INPUT(${1:*components}, ${2:**attributes})
+	INPUT(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ INPUT 
-	INPUT(${1:*components}, ${2:**attributes})
+	INPUT(${1:*components}, ${2:**attributes})${3}
 ## TEXTAREA 
 snippet textarea_
-	TEXTAREA(${1:*components})
+	TEXTAREA(${1:*components})${2}
 snippet textarea__
-	TEXTAREA(${1:*components}, ${2:**attributes})
+	TEXTAREA(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ TEXTAREA 
-	TEXTAREA(${1:*components}, ${2:**attributes})
+	TEXTAREA(${1:*components}, ${2:**attributes})${3}
 ## OPTION 
 snippet option_
-	OPTION(${1:*components})
+	OPTION(${1:*components})${2}
 snippet option__
-	OPTION(${1:*components}, ${2:**attributes})
+	OPTION(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ OPTION 
-	OPTION(${1:*components}, ${2:**attributes})
+	OPTION(${1:*components}, ${2:**attributes})${3}
 ## OBJECT 
 snippet object_
-	OBJECT(${1:*components})
+	OBJECT(${1:*components})${2}
 snippet object__
-	OBJECT(${1:*components}, ${2:**attributes})
+	OBJECT(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ OBJECT 
-	OBJECT(${1:*components}, ${2:**attributes})
+	OBJECT(${1:*components}, ${2:**attributes})${3}
 ## SELECT 
 snippet select_
-	SELECT(${1:*components})
+	SELECT(${1:*components})${2}
 snippet select__
-	SELECT(${1:*components}, ${2:**attributes})
+	SELECT(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ SELECT 
-	SELECT(${1:*components}, ${2:**attributes})
+	SELECT(${1:*components}, ${2:**attributes})${3}
 ## FIELDSET 
 snippet fieldset_
-	FIELDSET(${1:*components})
+	FIELDSET(${1:*components})${2}
 snippet fieldset__
-	FIELDSET(${1:*components}, ${2:**attributes})
+	FIELDSET(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ FIELDSET 
-	FIELDSET(${1:*components}, ${2:**attributes})
+	FIELDSET(${1:*components}, ${2:**attributes})${3}
 ## LEGEND 
 snippet legend_
-	LEGEND(${1:*components})
+	LEGEND(${1:*components})${2}
 snippet legend__
-	LEGEND(${1:*components}, ${2:**attributes})
+	LEGEND(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ LEGEND 
-	LEGEND(${1:*components}, ${2:**attributes})
+	LEGEND(${1:*components}, ${2:**attributes})${3}
 ## FORM 
 snippet form_
-	FORM(${1:*components})
+	FORM(${1:*components})${2}
 snippet form__
-	FORM(${1:*components}, ${2:**attributes})
+	FORM(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ FORM 
-	FORM(${1:*components}, ${2:**attributes})
+	FORM(${1:*components}, ${2:**attributes})${3}
 ## MENU 
 snippet menu_
-	MENU(${1:*components})
+	MENU(${1:*components})${2}
 snippet menu__
-	MENU(${1:*components}, ${2:**attributes})
+	MENU(${1:*components}, ${2:**attributes})${3}
 snippet helpers_ MENU 
-	MENU(${1:*components}, ${2:**attributes})
+	MENU(${1:*components}, ${2:**attributes})${3}
 # ============================================================================
 # Validator Objects
 # ============================================================================
@@ -500,14 +502,14 @@ snippet validators_ IS_DATETIME
 	IS_DATETIME(format='${1:%Y-%m-%d %H:%M:%S}', error_message='${2:enter date and time as %(format)s}')${3}
 ## IS_DATE_IN_RANGE
 snippet is_date_in_range_
-	IS_DATE_IN_RANGE(${1:minimum}, ${2:maximum}${3})${4}
+	IS_DATE_IN_RANGE(minimun=${1:None}, maximun=${2:None}${3})${4}
 snippet is_date_in_range__
-	IS_DATE_IN_RANGE(minimum=${1:1}, maximum=${2:1}, format='${3:%Y-%m-%d}', error_message=${4:1})${5}
+	IS_DATE_IN_RANGE(minimum=${1:None}, maximum=${2:None}, format='${3:%Y-%m-%d}', error_message=${4:None})${5}
 snippet validators_ IS_DATE_IN_RANGE
-	IS_DATE_IN_RANGE(minimum=${1:1}, maximum=${2:1}, format='${3:%Y-%m-%d}', error_message=${4:1})${5}
+	IS_DATE_IN_RANGE(minimum=${1:None}, maximum=${2:None}, format='${3:%Y-%m-%d}', error_message=${4:None})${5}
 ## IS_DATETIME_IN_RANGE
 snippet is_datetime_in_range_
-	IS_DATETIME_IN_RANGE(${1:minimum}, ${2:maximum}${3})${4}
+	IS_DATETIME_IN_RANGE(minimum=${1:None}, maximum=${2:None}${3})${4}
 snippet is_datetime_in_range__
 	IS_DATETIME_IN_RANGE(minimum=${1:None}, maximum=${2:None}, format='${3:%Y-%m-%d %H:%M:%S}', error_message=${4:None})${5}
 snippet validators_ IS_DATETIME_IN_RANGE
@@ -598,7 +600,7 @@ snippet validators_ IS_MATCH
 	IS_MATCH(${1:expression}, error_message='${2:invalid expression}')${3}
 ## IS_EMPTY_OR
 snippet is_empty_or_
-	IS_EMPTY_OR(${1:other})
+	IS_EMPTY_OR(${1:other})${2}
 snippet is_empty_or__
 	IS_EMPTY_OR(${1:other}, null=${2:None}, empty_regex=${3:None})${4}
 snippet validators_ IS_EMPTY_OR
@@ -694,7 +696,7 @@ snippet validators_ IS_NOT_IN_DB
 snippet dal_
 	db = DAL('sqlite://${1:dummy}.db')${2}
 snippet dal__ sqlite
-	db = DAL('sqlite://${1:file}.db', pool_size=${2:0})${3}
+	db = DAL('sqlite://${1:dummy}.db', pool_size=${2:0})${3}
 snippet dal__ mysql
 	db = DAL('mysql://${1:user}:${2:password}@${3:localhost}/${4:database}', pool_size=${5:0})${6}
 snippet dal__ postgres
@@ -718,7 +720,7 @@ snippet define_table__
 	)
 ## FIELD
 snippet field_
-	Field('${1:fieldname}', '${2:string}'),${3}
+	Field('${1:fieldname}', '${2:string}'${3}),${4}
 snippet field__
 	Field(
 		'${2:fieldname}',
@@ -729,6 +731,8 @@ snippet field__
 		label=${10:None}, comment=${11:None}, widget=${12:None},
 		readable=${13:True}, writable=${14:True},
 		uploadfolder=${15:None}, autodelete=${16:False}, authorize=${17:None},
+		ondelete='CASCADE', uploadfield=True, update=None, authorize=None,
+		autodelte=False, represent=None, compute=None
 	),${18}
 ## WIDGETS
 snippet widget_
@@ -737,18 +741,20 @@ snippet widget_
 # Database to HTML
 # ============================================================================
 snippet sqlform_
-	SQLFORM()
+	SQLFORM(${1:table}, record=${2:None}, deletable=${3:False}${4})${5}
+snippet sqlform__
+	SQLFORM(${1:table}, record=${2:None}, deletable=${3:False}, linkto=${4:None}, upload=${5:None}, fields=${6:None}, labels=${7:None}, col3={}, submit_button='Submit', delete_label='Check to delete:', showid=True, readonly=False, comments=True, keepopts=[], ignore_rw=False, record_id=None, ${8:**attributes})${9}
 snippet sqltable_
-	SQLTABLE()
+	SQLTABLE(${1:sqlrows}${2})${3}
+snippet sqltable__
+	SQLTABLE(${1:sqlrows}, linkto=${2:None}, upload=${3:None}, orderby=${4:None}, headers={}, truncate=16, columns=None, ${5:**attributes})${6}
 # ============================================================================
 # Templates
 # ============================================================================
 snippet include_
-	{{include '${1:otherview}.html'}}
-	${2}
+	{{include '${1:otherview}.html'}}${2}
 snippet extend_
-	{{extend '${1:layout}.html'}}
-	${2}
+	{{extend '${1:layout}.html'}}${2}
 snippet __
 	{{=${1:varname}}}${2}
 snippet -_ 
