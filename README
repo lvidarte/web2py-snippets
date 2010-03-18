@@ -14,4 +14,4 @@ Autoload:
     # vim:set filetype=python.web2py:
 
 	Add the following line in your web2py html template files:
-    <!-- vim:set filetype=html.web2py: -->
+    {{# vim:set filetype=html.web2py: }}

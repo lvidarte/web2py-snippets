@@ -10,7 +10,7 @@
 #   # vim:set filetype=python.web2py:
 #
 # For autoload set in html files (templates web2py):
-#   <!-- vim:set filetype=html.web2py: -->
+#   {{# vim:set filetype=html.web2py: }} 
 
 # ============================================================================
 #  COMPLETE API
@@ -777,3 +777,5 @@ snippet block_
 	{{
 		${1}
 	}}
+snippet #_
+	{{# ${1:comment} }}${2}
