@@ -757,20 +757,24 @@ snippet extend_
 	{{extend '${1:layout}.html'}}${2}
 snippet __
 	{{=${1:varname}}}${2}
-snippet -_ 
+snippet ___
 	{{${1:code}}}${2}
 snippet if_
+	{{if ${1:expression}:}}${2:code}{{pass}}${3}
+snippet if__
 	{{if ${1:expression}:}}
 		${2:code}
 	{{pass}}
-snippet if__
-	{{if ${1:expression}:}}${2:code}{{pass}}${3}
+snippet else_
+	{{else:}}
+snippet elif_
+	{{elif ${1:expression}:}}${2}
 snippet for_
+	{{for ${1:item} in ${2:iterable}:}}${3:code}{{pass}}
+snippet for__
 	{{for ${1:item} in ${2:iterable}:}}
 		${3:code}
 	{{pass}}
-snippet for__
-	{{for ${1:item} in ${2:iterable}:}}${3:code}{{pass}}
 snippet pass_
 	{{pass}}
 snippet block_
